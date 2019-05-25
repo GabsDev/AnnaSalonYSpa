@@ -1,0 +1,19 @@
+<?php
+session_start();	
+$name = $_GET['name'];
+$email = $_GET['email'];
+$message = $_GET['message'];
+$subject = 'Quasar New Message, from ' . $name;
+if(strtolower($_REQUEST['code']) == strtolower($_SESSION['random_number']))
+{
+$TO = "info@annasalonyspa.com";
+$h = "From: " . $email;
+$content = "$name ($email) te envío el siguiente mensaje :\n\n$message";
+mail($TO, $subject, $content, $h);		
+	echo 1;		
+}	
+else
+{
+	echo 0; // invalid code
+}
+?>
